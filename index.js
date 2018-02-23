@@ -96,8 +96,8 @@ function lastLogCheckpoint(req, res) {
           const url = `${date.format('YYYY/MM/DD')}/${date.format('HH')}/${log._id}.json`;
           console.log(`Uploading ${url}.`);
 
-          // papertrail here...
-          logger.info(JSON.stringify(log), cb);
+          // Already JSON, don't double encode
+          logger.info(log, cb);
         }, (err) => {
           if (err) {
             return callback(err);
