@@ -1,6 +1,6 @@
 {
   "name": "auth0-logs-to-cloudwatch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This extension will take all of your Auth0 logs and export them to CloudWatch.",
   "main": "index.js",
   "scripts": {
@@ -28,7 +28,6 @@
     "winston-cloudwatch-transport": "^1.0.8",
     "request": "^2.56.0",
     "json-loader": "^0.5.4"
-
   },
   "devDependencies": {
     "babel-core": "^6.5.1",

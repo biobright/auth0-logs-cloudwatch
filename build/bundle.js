@@ -43,7 +43,7 @@ module.exports =
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -146,8 +146,8 @@ module.exports =
 	        var url = date.format('YYYY/MM/DD') + '/' + date.format('HH') + '/' + log._id + '.json';
 	        console.log('Uploading ' + url + '.');
 
-	        // papertrail here...
-	        logger.info(JSON.stringify(log), cb);
+	        // Already JSON, don't double encode
+	        logger.info(log, cb);
 	      }, function (err) {
 	        if (err) {
 	          return callback(err);
@@ -456,39 +456,39 @@ module.exports =
 
 	module.exports = Webtask.fromExpress(app);
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("winston");
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("async");
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("moment");
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("useragent");
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("express");
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	exports.auth0 = __webpack_require__(7);
 	exports.fromConnect = exports.fromExpress = fromConnect;
@@ -645,9 +645,9 @@ module.exports =
 	}
 
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var url = __webpack_require__(8);
 	var error = __webpack_require__(9);
@@ -858,15 +858,15 @@ module.exports =
 	}
 
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("url");
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = function (err, res) {
 	    res.writeHead(err.code || 500, { 
@@ -877,9 +877,9 @@ module.exports =
 	};
 
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var error = __webpack_require__(9);
 
@@ -941,15 +941,15 @@ module.exports =
 	};
 
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("jsonwebtoken");
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var error = __webpack_require__(9);
 
@@ -995,9 +995,9 @@ module.exports =
 	};
 
 
-/***/ },
+/***/ }),
 /* 13 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var error = __webpack_require__(9);
 
@@ -1084,33 +1084,33 @@ module.exports =
 	};
 
 
-/***/ },
+/***/ }),
 /* 14 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("superagent");
 
-/***/ },
+/***/ }),
 /* 15 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("boom");
 
-/***/ },
+/***/ }),
 /* 16 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("request");
 
-/***/ },
+/***/ }),
 /* 17 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("lru-memoizer");
 
-/***/ },
+/***/ }),
 /* 18 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var AWS = __webpack_require__(19);
 	var _ = __webpack_require__(20);
@@ -1332,27 +1332,27 @@ module.exports =
 	module.exports = Transport;
 
 
-/***/ },
+/***/ }),
 /* 19 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("aws-sdk");
 
-/***/ },
+/***/ }),
 /* 20 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("lodash");
 
-/***/ },
+/***/ }),
 /* 21 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("util");
 
-/***/ },
+/***/ }),
 /* 22 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/*!
 	Copyright (C) 2013 by WebReflection
@@ -1540,9 +1540,9 @@ module.exports =
 	this.stringify = stringifyRecursion;
 	this.parse = parseRecursion;
 
-/***/ },
+/***/ }),
 /* 23 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	//      Copyright (c) 2012 Mathieu Turcotte
 	//      Licensed under the MIT license.
@@ -1577,9 +1577,9 @@ module.exports =
 	};
 
 
-/***/ },
+/***/ }),
 /* 24 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	//      Copyright (c) 2012 Mathieu Turcotte
 	//      Licensed under the MIT license.
@@ -1648,15 +1648,15 @@ module.exports =
 	module.exports = Backoff;
 
 
-/***/ },
+/***/ }),
 /* 25 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("events");
 
-/***/ },
+/***/ }),
 /* 26 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/*
 	 * Copyright (c) 2012 Mathieu Turcotte
@@ -1665,9 +1665,9 @@ module.exports =
 
 	module.exports = __webpack_require__(27);
 
-/***/ },
+/***/ }),
 /* 27 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/*
 	 * Copyright (c) 2012 Mathieu Turcotte
@@ -1765,9 +1765,9 @@ module.exports =
 	module.exports.checkIsObject = typeCheck('object');
 
 
-/***/ },
+/***/ }),
 /* 28 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/*
 	 * Copyright (c) 2012 Mathieu Turcotte
@@ -1795,9 +1795,9 @@ module.exports =
 	module.exports.IllegalStateError = IllegalStateError;
 	module.exports.IllegalArgumentError = IllegalArgumentError;
 
-/***/ },
+/***/ }),
 /* 29 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	//      Copyright (c) 2012 Mathieu Turcotte
 	//      Licensed under the MIT license.
@@ -1842,9 +1842,9 @@ module.exports =
 	module.exports = ExponentialBackoffStrategy;
 
 
-/***/ },
+/***/ }),
 /* 30 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	//      Copyright (c) 2012 Mathieu Turcotte
 	//      Licensed under the MIT license.
@@ -1928,9 +1928,9 @@ module.exports =
 	module.exports = BackoffStrategy;
 
 
-/***/ },
+/***/ }),
 /* 31 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	//      Copyright (c) 2012 Mathieu Turcotte
 	//      Licensed under the MIT license.
@@ -1962,9 +1962,9 @@ module.exports =
 	module.exports = FibonacciBackoffStrategy;
 
 
-/***/ },
+/***/ }),
 /* 32 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	//      Copyright (c) 2012 Mathieu Turcotte
 	//      Licensed under the MIT license.
@@ -2158,244 +2158,11 @@ module.exports =
 	module.exports = FunctionCall;
 
 
-/***/ },
+/***/ }),
 /* 33 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
-	module.exports = {
-		"title": "Auth0 Logs to CloudWatch",
-		"name": "auth0-logs-to-cloudwatch",
-		"version": "1.1.0",
-		"author": "auth0",
-		"description": "This extension will take all of your Auth0 logs and export them to CloudWatch",
-		"type": "cron",
-		"logoUrl": "https://truesightpulse.bmc.com/wp-content/uploads/2016/11/cloudwatch.png",
-		"repository": "https://github.com/pushpabrol/auth0-logs-cloudwatch",
-		"keywords": [
-			"auth0",
-			"extension"
-		],
-		"schedule": "0 */5 * * * *",
-		"auth0": {
-			"scopes": "read:logs"
-		},
-		"secrets": {
-			"CLOUDWATCH_LOG_GROUP_NAME": {
-				"description": "Cloudwatch Log Group Name",
-				"required": true
-			},
-			"CLOUDWATCH_LOG_STREAM_NAME": {
-				"description": "Cloudwatch Log Group Stream Name",
-				"required": true
-			},
-			"AWS_ACCESS_KEY_ID": {
-				"description": "AWS Access Key Id Host",
-				"required": true
-			},
-			"AWS_SECRET_KEY": {
-				"description": "AWS Secret Key",
-				"required": true
-			},
-			"AWS_REGION": {
-				"description": "AWS Region",
-				"required": true
-			},
-			"BATCH_SIZE": {
-				"description": "The ammount of logs to be read on each execution. Maximun is 100.",
-				"default": 100
-			},
-			"LOG_LEVEL": {
-				"description": "This allows you to specify the log level of events that need to be sent",
-				"type": "select",
-				"allowMultiple": true,
-				"options": [
-					{
-						"value": "-",
-						"text": ""
-					},
-					{
-						"value": "0",
-						"text": "Debug"
-					},
-					{
-						"value": "1",
-						"text": "Info"
-					},
-					{
-						"value": "2",
-						"text": "Warning"
-					},
-					{
-						"value": "3",
-						"text": "Error"
-					},
-					{
-						"value": "4",
-						"text": "Critical"
-					}
-				]
-			},
-			"LOG_TYPES": {
-				"description": "If you only want to send events with a specific type (eg: failed logins)",
-				"type": "select",
-				"allowMultiple": true,
-				"options": [
-					{
-						"value": "-",
-						"text": ""
-					},
-					{
-						"value": "s",
-						"text": "Success Login (Info)"
-					},
-					{
-						"value": "seacft",
-						"text": "Success Exchange (Info)"
-					},
-					{
-						"value": "feacft",
-						"text": "Failed Exchange (Error)"
-					},
-					{
-						"value": "f",
-						"text": "Failed Login (Error)"
-					},
-					{
-						"value": "w",
-						"text": "Warnings During Login (Warning)"
-					},
-					{
-						"value": "du",
-						"text": "Deleted User (Info)"
-					},
-					{
-						"value": "fu",
-						"text": "Failed Login (invalid email/username) (Error)"
-					},
-					{
-						"value": "fp",
-						"text": "Failed Login (wrong password) (Error)"
-					},
-					{
-						"value": "fc",
-						"text": "Failed by Connector (Error)"
-					},
-					{
-						"value": "fco",
-						"text": "Failed by CORS (Error)"
-					},
-					{
-						"value": "con",
-						"text": "Connector Online (Info)"
-					},
-					{
-						"value": "coff",
-						"text": "Connector Offline (Error)"
-					},
-					{
-						"value": "fcpro",
-						"text": "Failed Connector Provisioning (Critical)"
-					},
-					{
-						"value": "ss",
-						"text": "Success Signup (Info)"
-					},
-					{
-						"value": "fs",
-						"text": "Failed Signup (Error)"
-					},
-					{
-						"value": "cs",
-						"text": "Code Sent (Debug)"
-					},
-					{
-						"value": "cls",
-						"text": "Code/Link Sent (Debug)"
-					},
-					{
-						"value": "sv",
-						"text": "Success Verification Email (Debug)"
-					},
-					{
-						"value": "fv",
-						"text": "Failed Verification Email (Debug)"
-					},
-					{
-						"value": "scp",
-						"text": "Success Change Password (Info)"
-					},
-					{
-						"value": "fcp",
-						"text": "Failed Change Password (Error)"
-					},
-					{
-						"value": "sce",
-						"text": "Success Change Email (Info)"
-					},
-					{
-						"value": "fce",
-						"text": "Failed Change Email (Error)"
-					},
-					{
-						"value": "scu",
-						"text": "Success Change Username (Info)"
-					},
-					{
-						"value": "fcu",
-						"text": "Failed Change Username (Error)"
-					},
-					{
-						"value": "scpn",
-						"text": "Success Change Phone Number (Info)"
-					},
-					{
-						"value": "fcpn",
-						"text": "Failed Change Phone Number (Error)"
-					},
-					{
-						"value": "svr",
-						"text": "Success Verification Email Request (Debug)"
-					},
-					{
-						"value": "fvr",
-						"text": "Failed Verification Email Request (Error)"
-					},
-					{
-						"value": "scpr",
-						"text": "Success Change Password Request (Debug)"
-					},
-					{
-						"value": "fcpr",
-						"text": "Failed Change Password Request (Error)"
-					},
-					{
-						"value": "fn",
-						"text": "Failed Sending Notification (Error)"
-					},
-					{
-						"value": "limit_wc",
-						"text": "Blocked Account (Critical)"
-					},
-					{
-						"value": "limit_ui",
-						"text": "Too Many Calls to /userinfo (Critical)"
-					},
-					{
-						"value": "api_limit",
-						"text": "Rate Limit On API (Critical)"
-					},
-					{
-						"value": "sdu",
-						"text": "Successful User Deletion (Info)"
-					},
-					{
-						"value": "fdu",
-						"text": "Failed User Deletion (Error)"
-					}
-				]
-			}
-		}
-	};
+	module.exports = {"title":"Auth0 Logs to CloudWatch","name":"auth0-logs-to-cloudwatch","version":"1.1.0","author":"auth0","description":"This extension will take all of your Auth0 logs and export them to CloudWatch","type":"cron","logoUrl":"https://truesightpulse.bmc.com/wp-content/uploads/2016/11/cloudwatch.png","repository":"https://github.com/pushpabrol/auth0-logs-cloudwatch","keywords":["auth0","extension"],"schedule":"0 */5 * * * *","auth0":{"scopes":"read:logs"},"secrets":{"CLOUDWATCH_LOG_GROUP_NAME":{"description":"Cloudwatch Log Group Name","required":true},"CLOUDWATCH_LOG_STREAM_NAME":{"description":"Cloudwatch Log Group Stream Name","required":true},"AWS_ACCESS_KEY_ID":{"description":"AWS Access Key Id Host","required":true},"AWS_SECRET_KEY":{"description":"AWS Secret Key","required":true},"AWS_REGION":{"description":"AWS Region","required":true},"BATCH_SIZE":{"description":"The ammount of logs to be read on each execution. Maximun is 100.","default":100},"LOG_LEVEL":{"description":"This allows you to specify the log level of events that need to be sent","type":"select","allowMultiple":true,"options":[{"value":"-","text":""},{"value":"0","text":"Debug"},{"value":"1","text":"Info"},{"value":"2","text":"Warning"},{"value":"3","text":"Error"},{"value":"4","text":"Critical"}]},"LOG_TYPES":{"description":"If you only want to send events with a specific type (eg: failed logins)","type":"select","allowMultiple":true,"options":[{"value":"-","text":""},{"value":"s","text":"Success Login (Info)"},{"value":"seacft","text":"Success Exchange (Info)"},{"value":"feacft","text":"Failed Exchange (Error)"},{"value":"f","text":"Failed Login (Error)"},{"value":"w","text":"Warnings During Login (Warning)"},{"value":"du","text":"Deleted User (Info)"},{"value":"fu","text":"Failed Login (invalid email/username) (Error)"},{"value":"fp","text":"Failed Login (wrong password) (Error)"},{"value":"fc","text":"Failed by Connector (Error)"},{"value":"fco","text":"Failed by CORS (Error)"},{"value":"con","text":"Connector Online (Info)"},{"value":"coff","text":"Connector Offline (Error)"},{"value":"fcpro","text":"Failed Connector Provisioning (Critical)"},{"value":"ss","text":"Success Signup (Info)"},{"value":"fs","text":"Failed Signup (Error)"},{"value":"cs","text":"Code Sent (Debug)"},{"value":"cls","text":"Code/Link Sent (Debug)"},{"value":"sv","text":"Success Verification Email (Debug)"},{"value":"fv","text":"Failed Verification Email (Debug)"},{"value":"scp","text":"Success Change Password (Info)"},{"value":"fcp","text":"Failed Change Password (Error)"},{"value":"sce","text":"Success Change Email (Info)"},{"value":"fce","text":"Failed Change Email (Error)"},{"value":"scu","text":"Success Change Username (Info)"},{"value":"fcu","text":"Failed Change Username (Error)"},{"value":"scpn","text":"Success Change Phone Number (Info)"},{"value":"fcpn","text":"Failed Change Phone Number (Error)"},{"value":"svr","text":"Success Verification Email Request (Debug)"},{"value":"fvr","text":"Failed Verification Email Request (Error)"},{"value":"scpr","text":"Success Change Password Request (Debug)"},{"value":"fcpr","text":"Failed Change Password Request (Error)"},{"value":"fn","text":"Failed Sending Notification (Error)"},{"value":"limit_wc","text":"Blocked Account (Critical)"},{"value":"limit_ui","text":"Too Many Calls to /userinfo (Critical)"},{"value":"api_limit","text":"Rate Limit On API (Critical)"},{"value":"sdu","text":"Successful User Deletion (Info)"},{"value":"fdu","text":"Failed User Deletion (Error)"}]}}}
 
-/***/ }
+/***/ })
 /******/ ]);
